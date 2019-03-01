@@ -1,17 +1,28 @@
 const app = angular.module('app', ['ui.router'])
 
-app.component('helloComponent', {
-  template: '<div>Hello, {{name}}!</div>',
-  controller: function ($scope) {
-    $scope.name = 'uirouter';
+const helloComponent = {
+  bindings: {
+    userName: '<'
+  },
+  template: '<div>Hello, {{$ctrl.userName}}!</div>',
+  controller: function () {
+    console.log('userName', this.userName)
+    setTimeout(() => {
+      console.log('userName', this.userName)
+    }, 0);
   }
-});
+};
+
+app.component('helloComponent', helloComponent);
 
 app.config(($stateProvider, $urlRouterProvider) => {
 
   $stateProvider.state('hello', {
     url: '/hello',
-    component: 'helloComponent'
+    component: 'helloComponent',
+    resolve: {
+      userName: () => 'uirouter'
+    }
   });
 
   $urlRouterProvider.otherwise('/hello');
