@@ -21,3 +21,8 @@ controller: function () {
 npm install
 npm run demo
 ```
+
+Reference
+---------
+
+- <https://ui-router.github.io/guide/ng1/route-to-component>
