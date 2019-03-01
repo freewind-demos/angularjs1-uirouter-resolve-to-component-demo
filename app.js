@@ -1,20 +1,20 @@
 const app = angular.module('app', ['ui.router'])
 
+app.component('helloComponent', {
+  template: '<div>Hello, {{name}}!</div>',
+  controller: function ($scope) {
+    $scope.name = 'uirouter';
+  }
+});
+
 app.config(($stateProvider, $urlRouterProvider) => {
 
-  $stateProvider.state({
-    name: 'pa',
-    url: '/page-a',
-    templateUrl: './templates/a.html'
+  $stateProvider.state('hello', {
+    url: '/hello',
+    component: 'helloComponent'
   });
 
-  $stateProvider.state({
-    name: 'pb',
-    url: '/page-b',
-    templateUrl: './templates/b.html'
-  });
-
-  $urlRouterProvider.otherwise('/page-a');
+  $urlRouterProvider.otherwise('/hello');
 
 });
 
