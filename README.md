@@ -19,7 +19,7 @@ controller: function () {
 
 ```
 npm install
-npm run demo
+npm start
 ```
 
 Reference
